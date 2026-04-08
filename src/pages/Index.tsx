@@ -6,7 +6,8 @@ const CATEGORIES = [
   { id: "ipad", label: "iPad", icon: "Tablet" },
   { id: "macbook", label: "MacBook", icon: "Laptop" },
   { id: "watch", label: "Apple Watch", icon: "Watch" },
-  { id: "sony", label: "Sony", icon: "Headphones" },
+  { id: "airpods", label: "AirPods", icon: "Ear" },
+  { id: "sony", label: "Sony", icon: "Gamepad2" },
   { id: "dyson", label: "Dyson", icon: "Wind" },
   { id: "other", label: "Другие", icon: "Package" },
 ];
@@ -157,6 +158,54 @@ const PRODUCTS = [
     badge: "Хит",
   },
   {
+    id: 11,
+    category: "airpods",
+    name: "AirPods Pro 2",
+    price: 24990,
+    image: "https://cdn.poehali.dev/projects/196d8e70-3b59-412c-9ee8-399dbe31d184/files/e880fad3-5f2e-4573-aa50-1f34563cd814.jpg",
+    specs: {
+      "Тип": "Внутриканальные TWS",
+      "ANC": "Адаптивное H2",
+      "Аккумулятор": "до 6 ч (30 с кейсом)",
+      "Чип": "H2",
+      "Звук": "Пространственный",
+      "Влагозащита": "IPX4",
+    },
+    badge: "Хит",
+  },
+  {
+    id: 12,
+    category: "airpods",
+    name: "AirPods 4",
+    price: 16990,
+    image: "https://cdn.poehali.dev/projects/196d8e70-3b59-412c-9ee8-399dbe31d184/files/e880fad3-5f2e-4573-aa50-1f34563cd814.jpg",
+    specs: {
+      "Тип": "Открытые TWS",
+      "ANC": "Активное шумоподавление",
+      "Аккумулятор": "до 5 ч (30 с кейсом)",
+      "Чип": "H2",
+      "Звук": "Пространственный",
+      "Влагозащита": "IPX4",
+    },
+    badge: "Новинка",
+  },
+  {
+    id: 13,
+    category: "airpods",
+    name: "AirPods Max",
+    price: 59990,
+    image: "https://cdn.poehali.dev/projects/196d8e70-3b59-412c-9ee8-399dbe31d184/files/e880fad3-5f2e-4573-aa50-1f34563cd814.jpg",
+    specs: {
+      "Тип": "Накладные беспроводные",
+      "ANC": "Адаптивное",
+      "Аккумулятор": "до 20 ч",
+      "Чип": "H1",
+      "Звук": "Пространственный Dolby Atmos",
+      "Влагозащита": "IPX4",
+    },
+    badge: null,
+  },
+  {
     id: 10,
     category: "other",
     name: "AirPods Pro 2",
@@ -207,10 +256,12 @@ export default function Index() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-2">
-              <span className="text-xl font-bold tracking-tight text-gray-900">
-                To<span className="text-blue-600">phone</span>
-              </span>
+            <div className="flex items-center">
+              <div className="relative flex items-end leading-none select-none">
+                <span className="text-4xl font-bold text-gray-900" style={{fontFamily:"Georgia, serif", letterSpacing:"-0.02em", lineHeight:1}}>T</span>
+                <span className="text-4xl font-bold text-gray-900" style={{fontFamily:"Georgia, serif", letterSpacing:"-0.02em", lineHeight:1, marginLeft:"-4px"}}>P</span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] font-semibold tracking-[0.18em] uppercase text-gray-900 whitespace-nowrap" style={{fontFamily:"'Golos Text', sans-serif"}}>TOPHONE</span>
+              </div>
             </div>
 
             <nav className="hidden md:flex items-center gap-6">
@@ -552,9 +603,11 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <span className="text-xl font-bold tracking-tight text-gray-900">
-                To<span className="text-blue-600">phone</span>
-              </span>
+              <div className="relative flex items-end leading-none select-none">
+                <span className="text-4xl font-bold text-gray-900" style={{fontFamily:"Georgia, serif", letterSpacing:"-0.02em", lineHeight:1}}>T</span>
+                <span className="text-4xl font-bold text-gray-900" style={{fontFamily:"Georgia, serif", letterSpacing:"-0.02em", lineHeight:1, marginLeft:"-4px"}}>P</span>
+                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[9px] font-semibold tracking-[0.18em] uppercase text-gray-900 whitespace-nowrap" style={{fontFamily:"'Golos Text', sans-serif"}}>TOPHONE</span>
+              </div>
               <p className="text-sm text-gray-400 mt-1">
                 Премиальная техника с официальной гарантией
               </p>
