@@ -256,15 +256,11 @@ export default function Index() {
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="relative flex items-end leading-none select-none bg-black rounded-xl px-3 pt-1 pb-3.5" style={{minWidth: 72}}>
-                <span className="text-[40px] font-bold text-white" style={{fontFamily:"Georgia, serif", lineHeight:1}}>T</span>
-                <span className="text-[40px] font-bold text-white mx-1" style={{fontFamily:"Georgia, serif", lineHeight:1}}>P</span>
-                <span className="absolute top-0.5 right-1.5 text-[11px] leading-none">🍎</span>
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[7.5px] font-bold tracking-[0.22em] uppercase text-white whitespace-nowrap flex items-center gap-0.5" style={{fontFamily:"'Golos Text', sans-serif"}}>
-                  <span>🤲</span>TOPHONE
-                </span>
-              </div>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold tracking-tight text-gray-900" style={{fontFamily:"Georgia, serif"}}>Tophone</span>
+              <svg width="22" height="26" viewBox="0 0 814 1000" fill="currentColor" className="text-gray-900 -mt-1">
+                <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-167.5-123.1C172.7 719.7 128 604 128 493c0-155.5 100.8-237.8 199.9-237.8 56 0 101.8 37.5 136.4 37.5 33.2 0 85.4-39.5 149.3-39.5 24.1 0 108.2 2.2 166.3 86.2zm-74.3-166.5c28.7-34.7 48.8-83.1 48.8-131.5 0-6.7-.6-13.3-1.9-19.4-46.2 1.9-101.8 31.3-134.8 70.9-26.5 30.7-50.9 79.1-50.9 128.2 0 7.4 1.3 14.8 1.9 17.1 3.2.6 8.4 1.3 13.6 1.3 41.5 0 93.4-28 123.3-66.6z"/>
+              </svg>
             </div>
 
             <nav className="hidden md:flex items-center gap-6">
@@ -606,13 +602,11 @@ export default function Index() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <div className="relative flex items-end leading-none select-none bg-black rounded-xl px-3 pt-1 pb-3.5" style={{minWidth: 72}}>
-                <span className="text-[40px] font-bold text-white" style={{fontFamily:"Georgia, serif", lineHeight:1}}>T</span>
-                <span className="text-[40px] font-bold text-white mx-1" style={{fontFamily:"Georgia, serif", lineHeight:1}}>P</span>
-                <span className="absolute top-0.5 right-1.5 text-[11px] leading-none">🍎</span>
-                <span className="absolute bottom-1 left-1/2 -translate-x-1/2 text-[7.5px] font-bold tracking-[0.22em] uppercase text-white whitespace-nowrap flex items-center gap-0.5" style={{fontFamily:"'Golos Text', sans-serif"}}>
-                  <span>🤲</span>TOPHONE
-                </span>
+              <div className="flex items-center gap-2">
+                <span className="text-2xl font-bold tracking-tight text-gray-900" style={{fontFamily:"Georgia, serif"}}>Tophone</span>
+                <svg width="20" height="24" viewBox="0 0 814 1000" fill="currentColor" className="text-gray-900 -mt-1">
+                  <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.5-167.5-123.1C172.7 719.7 128 604 128 493c0-155.5 100.8-237.8 199.9-237.8 56 0 101.8 37.5 136.4 37.5 33.2 0 85.4-39.5 149.3-39.5 24.1 0 108.2 2.2 166.3 86.2zm-74.3-166.5c28.7-34.7 48.8-83.1 48.8-131.5 0-6.7-.6-13.3-1.9-19.4-46.2 1.9-101.8 31.3-134.8 70.9-26.5 30.7-50.9 79.1-50.9 128.2 0 7.4 1.3 14.8 1.9 17.1 3.2.6 8.4 1.3 13.6 1.3 41.5 0 93.4-28 123.3-66.6z"/>
+                </svg>
               </div>
               <p className="text-sm text-gray-400 mt-1">
                 Премиальная техника с официальной гарантией
