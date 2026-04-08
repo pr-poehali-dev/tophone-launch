@@ -20,6 +20,7 @@ export default {
 		},
 		fontFamily: {
 				golos: ["Golos Text", "sans-serif"],
+				sf: ["-apple-system", "BlinkMacSystemFont", "SF Pro Display", "Inter", "Segoe UI", "sans-serif"],
 			},
 		extend: {
 			colors: {

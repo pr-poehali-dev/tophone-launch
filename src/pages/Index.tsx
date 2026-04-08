@@ -226,6 +226,12 @@ const PRODUCTS = [
 const formatPrice = (p: number) =>
   p.toLocaleString("ru-RU") + " ₽";
 
+const AppleLogo = ({ size = 20, color = "#1d1d1f" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size * 1.22} viewBox="0 0 170 207" fill={color} xmlns="http://www.w3.org/2000/svg">
+    <path d="M150.37 130.25c-.77 1.73-1.56 3.43-2.39 5.1-3.16 6.37-6.87 12.48-11.13 18.26-5.87 7.9-10.68 13.37-14.38 16.41-5.74 5.27-11.88 7.97-18.46 8.12-4.72 0-10.42-1.34-17.05-4.07-6.65-2.71-12.77-4.05-18.38-4.05-5.89 0-12.21 1.34-18.96 4.05-6.77 2.73-12.22 4.15-16.41 4.29-6.31.27-12.59-2.51-18.87-8.36-3.99-3.31-9.02-9.01-15.07-17.1-6.46-8.65-11.78-18.68-15.97-30.1C1.56 111.23 0 99.13 0 87.42c0-13.36 2.88-24.87 8.64-34.49 4.52-7.72 10.55-13.82 18.12-18.32 7.56-4.5 15.73-6.79 24.51-6.94 4.81 0 11.11 1.49 18.94 4.41 7.81 2.93 12.83 4.42 15.03 4.42 1.65 0 7.22-1.74 16.64-5.2 8.92-3.2 16.45-4.52 22.62-4.01 16.73 1.35 29.29 7.94 37.62 19.82-14.96 9.07-22.35 21.77-22.2 38.06.13 12.69 4.73 23.27 13.77 31.67 4.1 3.89 8.67 6.9 13.74 9.03-.1.27-.2.54-.3.82zM119.11 7.24c0 9.95-3.63 19.24-10.88 27.83-8.74 10.22-19.31 16.12-30.76 15.19-.15-1.19-.23-2.44-.23-3.75 0-9.55 4.16-19.77 11.54-28.11 3.69-4.23 8.38-7.75 14.07-10.56 5.68-2.77 11.06-4.3 16.12-4.56.15 1.33.14 2.65.14 3.96z"/>
+  </svg>
+);
+
 export default function Index() {
   const [activeCategory, setActiveCategory] = useState("iphone");
   const [compareList, setCompareList] = useState<number[]>([]);
@@ -245,33 +251,32 @@ export default function Index() {
   };
 
   const compareProducts = PRODUCTS.filter((p) => compareList.includes(p.id));
-
   const allSpecKeys = Array.from(
     new Set(compareProducts.flatMap((p) => Object.keys(p.specs)))
   );
 
   return (
-    <div className="min-h-screen bg-white font-golos">
+    <div className="min-h-screen bg-white" style={{ fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', Inter, 'Segoe UI', sans-serif" }}>
+
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-1.5">
-              <span className="text-2xl font-bold tracking-tight text-gray-900" style={{fontFamily:"Georgia, serif"}}>Tophone</span>
-              <svg width="20" height="24" viewBox="0 0 170 200" fill="#111111" xmlns="http://www.w3.org/2000/svg">
-                <path d="M150 80c-3 2-20 12-20 36 0 28 24 38 25 38-1 1-4 14-13 27-8 12-16 23-29 23s-16-7-31-7-19 8-31 8-20-7-32-23C8 165 0 143 0 123c0-29 19-45 38-45 11 0 19 7 26 7s16-7 28-7c5 0 20 0 32 16zM110 49c5-7 9-16 9-25 0-1 0-3 0-4-9 0-19 6-26 13-5 6-10 15-10 24 0 2 0 3 0 3 1 0 2 0 3 0C94 60 105 56 110 49z"/>
-              </svg>
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-[#d2d2d7]">
+        <div className="max-w-[980px] mx-auto px-5">
+          <div className="flex items-center justify-between h-12">
+
+            <div className="flex items-center gap-1">
+              <AppleLogo size={18} color="#1d1d1f" />
+              <span className="text-[17px] font-semibold tracking-tight text-[#1d1d1f]">Tophone</span>
             </div>
 
-            <nav className="hidden md:flex items-center gap-6">
+            <nav className="hidden md:flex items-center gap-7">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setActiveCategory(cat.id)}
-                  className={`text-sm font-medium transition-colors ${
+                  className={`text-[12px] transition-colors ${
                     activeCategory === cat.id
-                      ? "text-blue-600"
-                      : "text-gray-500 hover:text-gray-900"
+                      ? "text-[#1d1d1f] font-medium"
+                      : "text-[#6e6e73] hover:text-[#1d1d1f]"
                   }`}
                 >
                   {cat.label}
@@ -283,25 +288,24 @@ export default function Index() {
               {compareList.length > 0 && (
                 <button
                   onClick={() => setShowCompare(true)}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-full hover:bg-blue-700 transition-colors"
+                  className="hidden md:flex items-center gap-1.5 text-[12px] text-[#0071e3] hover:underline"
                 >
-                  <Icon name="BarChart2" size={16} />
                   Сравнить ({compareList.length})
                 </button>
               )}
               <button
-                className="md:hidden p-2 text-gray-500"
+                className="md:hidden p-1.5 text-[#1d1d1f]"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               >
-                <Icon name={mobileMenuOpen ? "X" : "Menu"} size={22} />
+                <Icon name={mobileMenuOpen ? "X" : "Menu"} size={20} />
               </button>
             </div>
           </div>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3">
-            <div className="grid grid-cols-2 gap-2">
+          <div className="md:hidden border-t border-[#d2d2d7] bg-white/95 backdrop-blur-xl px-5 py-4">
+            <div className="grid grid-cols-2 gap-1">
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat.id}
@@ -309,10 +313,10 @@ export default function Index() {
                     setActiveCategory(cat.id);
                     setMobileMenuOpen(false);
                   }}
-                  className={`text-left px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  className={`text-left px-3 py-2.5 rounded-lg text-[13px] transition-colors ${
                     activeCategory === cat.id
-                      ? "bg-blue-50 text-blue-600"
-                      : "text-gray-600 hover:bg-gray-50"
+                      ? "bg-[#f5f5f7] text-[#1d1d1f] font-medium"
+                      : "text-[#6e6e73] hover:bg-[#f5f5f7]"
                   }`}
                 >
                   {cat.label}
@@ -324,89 +328,78 @@ export default function Index() {
       </header>
 
       {/* Hero */}
-      <section className="border-b border-gray-100 bg-gradient-to-br from-gray-50 via-white to-blue-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="max-w-2xl">
-            <p className="text-blue-600 text-sm font-semibold tracking-widest uppercase mb-4">
-              Официальный магазин
-            </p>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight tracking-tight mb-6">
-              Техника, которой
-              <br />
-              <span className="text-blue-600">доверяют.</span>
-            </h1>
-            <p className="text-gray-500 text-lg mb-8 leading-relaxed">
-              Apple, Sony, Dyson и другие премиальные бренды. Гарантия, доставка по всей России.
-            </p>
-            <div className="flex items-center gap-4 flex-wrap">
-              <button
-                onClick={() => setActiveCategory("iphone")}
-                className="px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-colors text-sm"
-              >
-                Смотреть каталог
-              </button>
-              <div className="flex items-center gap-2 text-gray-400 text-sm">
-                <Icon name="Shield" size={16} />
-                <span>Официальная гарантия</span>
-              </div>
-            </div>
-          </div>
+      <section className="bg-[#f5f5f7] text-center py-20 md:py-28 px-5">
+        <p className="text-[#6e6e73] text-[14px] font-medium mb-3 tracking-wide">
+          Официальный магазин
+        </p>
+        <h1 className="text-[48px] md:text-[64px] font-semibold text-[#1d1d1f] leading-[1.1] tracking-tight mb-5">
+          Техника, которой<br />доверяют.
+        </h1>
+        <p className="text-[#6e6e73] text-[17px] md:text-[21px] max-w-xl mx-auto mb-8 leading-relaxed font-light">
+          Apple, Sony, Dyson и другие премиальные бренды.
+          <br className="hidden md:block" /> Гарантия, доставка по всей России.
+        </p>
+        <div className="flex items-center justify-center gap-5 flex-wrap">
+          <button
+            onClick={() => setActiveCategory("iphone")}
+            className="px-6 py-2 bg-[#0071e3] text-white text-[14px] font-medium rounded-full hover:bg-[#0077ed] transition-colors"
+          >
+            Смотреть каталог
+          </button>
+          <button className="px-6 py-2 bg-transparent text-[#0071e3] text-[14px] font-medium rounded-full border border-[#0071e3] hover:bg-[#0071e3]/5 transition-colors">
+            Узнать больше
+          </button>
         </div>
       </section>
 
       {/* Category tabs */}
-      <section className="border-b border-gray-100 bg-white sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto">
+      <div className="bg-white border-b border-[#d2d2d7] sticky top-12 z-40">
+        <div className="max-w-[980px] mx-auto px-5">
+          <div className="flex overflow-x-auto scrollbar-hide">
             {CATEGORIES.map((cat) => (
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`flex items-center gap-2 px-5 py-4 text-sm font-medium whitespace-nowrap border-b-2 transition-colors ${
+                className={`flex-shrink-0 px-5 py-3.5 text-[13px] font-medium whitespace-nowrap border-b-[1.5px] transition-all ${
                   activeCategory === cat.id
-                    ? "border-blue-600 text-blue-600"
-                    : "border-transparent text-gray-500 hover:text-gray-800"
+                    ? "border-[#1d1d1f] text-[#1d1d1f]"
+                    : "border-transparent text-[#6e6e73] hover:text-[#1d1d1f]"
                 }`}
               >
-                <Icon name={cat.icon} size={16} />
                 {cat.label}
               </button>
             ))}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* Compare hint */}
-      {compareList.length === 0 && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
-          <div className="flex items-center gap-2 text-gray-400 text-xs bg-gray-50 rounded-xl px-4 py-2.5 w-fit">
-            <Icon name="Info" size={14} />
-            <span>Выберите до 3 товаров для сравнения характеристик</span>
-          </div>
-        </div>
-      )}
+      {/* Products */}
+      <main className="max-w-[980px] mx-auto px-5 py-12 pb-28">
+        {compareList.length === 0 && (
+          <p className="text-[#6e6e73] text-[12px] mb-6">
+            Выберите до 3 товаров для сравнения характеристик
+          </p>
+        )}
 
-      {/* Products grid */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
         {filtered.length === 0 ? (
-          <div className="text-center py-24 text-gray-400">
-            <Icon name="Package" size={48} />
-            <p className="mt-4 text-lg">Товары скоро появятся</p>
+          <div className="text-center py-32 text-[#6e6e73]">
+            <Icon name="Package" size={40} />
+            <p className="mt-4 text-[17px]">Товары скоро появятся</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((product) => {
               const isInCompare = compareList.includes(product.id);
               return (
                 <div
                   key={product.id}
-                  className={`group bg-white rounded-2xl border transition-all duration-200 overflow-hidden flex flex-col ${
+                  className={`group bg-[#f5f5f7] rounded-2xl overflow-hidden flex flex-col transition-all duration-300 cursor-pointer ${
                     isInCompare
-                      ? "border-blue-400 shadow-lg shadow-blue-50 ring-1 ring-blue-200"
-                      : "border-gray-100 hover:border-gray-200 hover:shadow-md"
+                      ? "ring-2 ring-[#0071e3]"
+                      : "hover:bg-[#ebebeb]"
                   }`}
                 >
-                  <div className="relative bg-gray-50 aspect-square overflow-hidden">
+                  <div className="relative aspect-square overflow-hidden bg-white rounded-xl m-3 mb-0">
                     <img
                       src={product.image}
                       alt={product.name}
@@ -414,10 +407,10 @@ export default function Index() {
                     />
                     {product.badge && (
                       <span
-                        className={`absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold rounded-full ${
+                        className={`absolute top-3 left-3 px-2 py-0.5 text-[11px] font-semibold rounded-full ${
                           product.badge === "Новинка"
-                            ? "bg-blue-600 text-white"
-                            : "bg-orange-500 text-white"
+                            ? "bg-[#1d1d1f] text-white"
+                            : "bg-[#ff3b30] text-white"
                         }`}
                       >
                         {product.badge}
@@ -425,19 +418,19 @@ export default function Index() {
                     )}
                     <button
                       onClick={() => toggleCompare(product.id)}
-                      className={`absolute top-3 right-3 p-2 rounded-full transition-all ${
+                      className={`absolute top-3 right-3 p-1.5 rounded-full transition-all text-[11px] ${
                         isInCompare
-                          ? "bg-blue-600 text-white"
-                          : "bg-white/80 text-gray-500 hover:bg-white opacity-0 group-hover:opacity-100"
+                          ? "bg-[#0071e3] text-white"
+                          : "bg-white/80 text-[#6e6e73] opacity-0 group-hover:opacity-100 hover:bg-white"
                       }`}
                       title="Добавить к сравнению"
                     >
-                      <Icon name="BarChart2" size={14} />
+                      <Icon name="BarChart2" size={13} />
                     </button>
                   </div>
 
                   <div className="p-4 flex flex-col flex-1">
-                    <h3 className="font-semibold text-gray-900 text-sm mb-1">
+                    <h3 className="text-[15px] font-semibold text-[#1d1d1f] mb-1 leading-snug">
                       {product.name}
                     </h3>
 
@@ -447,7 +440,7 @@ export default function Index() {
                         .map(([k, v]) => (
                           <span
                             key={k}
-                            className="text-xs text-gray-500 bg-gray-50 rounded-md px-2 py-0.5"
+                            className="text-[11px] text-[#6e6e73] bg-white rounded-md px-2 py-0.5"
                           >
                             {v}
                           </span>
@@ -455,10 +448,10 @@ export default function Index() {
                     </div>
 
                     <div className="mt-auto flex items-center justify-between">
-                      <span className="text-lg font-bold text-gray-900">
+                      <span className="text-[15px] font-semibold text-[#1d1d1f]">
                         {formatPrice(product.price)}
                       </span>
-                      <button className="px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl hover:bg-blue-700 transition-colors">
+                      <button className="px-4 py-1.5 bg-[#0071e3] text-white text-[12px] font-medium rounded-full hover:bg-[#0077ed] transition-colors">
                         Купить
                       </button>
                     </div>
@@ -466,7 +459,7 @@ export default function Index() {
                     {isInCompare && (
                       <button
                         onClick={() => toggleCompare(product.id)}
-                        className="mt-2 text-xs text-blue-500 hover:text-blue-700 text-center"
+                        className="mt-2 text-[11px] text-[#0071e3] hover:underline text-center"
                       >
                         Убрать из сравнения
                       </button>
@@ -481,26 +474,22 @@ export default function Index() {
 
       {/* Compare modal */}
       {showCompare && compareProducts.length >= 2 && (
-        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6">
           <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setShowCompare(false)}
           />
-          <div className="relative bg-white w-full sm:rounded-3xl shadow-2xl max-h-[90vh] overflow-auto">
-            <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+          <div className="relative bg-white w-full sm:rounded-2xl shadow-2xl max-h-[92vh] overflow-auto">
+            <div className="sticky top-0 bg-white/95 backdrop-blur-md border-b border-[#d2d2d7] px-6 py-4 flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-bold text-gray-900">
-                  Сравнение товаров
-                </h2>
-                <p className="text-sm text-gray-500">
-                  {compareProducts.length} товара
-                </p>
+                <h2 className="text-[17px] font-semibold text-[#1d1d1f]">Сравнение</h2>
+                <p className="text-[12px] text-[#6e6e73]">{compareProducts.length} товара</p>
               </div>
               <button
                 onClick={() => setShowCompare(false)}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#ebebeb] transition-colors"
               >
-                <Icon name="X" size={20} />
+                <Icon name="X" size={16} />
               </button>
             </div>
 
@@ -508,26 +497,24 @@ export default function Index() {
               <table className="w-full min-w-max">
                 <thead>
                   <tr>
-                    <th className="text-left text-sm font-medium text-gray-400 px-6 py-4 w-40">
+                    <th className="text-left text-[12px] font-medium text-[#6e6e73] px-6 py-5 w-40">
                       Характеристика
                     </th>
                     {compareProducts.map((p) => (
-                      <th key={p.id} className="px-6 py-4 min-w-[200px]">
+                      <th key={p.id} className="px-6 py-5 min-w-[200px]">
                         <div className="flex flex-col items-center gap-3">
                           <img
                             src={p.image}
                             alt={p.name}
-                            className="w-20 h-20 object-cover rounded-xl bg-gray-50"
+                            className="w-20 h-20 object-cover rounded-xl bg-[#f5f5f7]"
                           />
                           <div className="text-center">
-                            <p className="font-semibold text-gray-900 text-sm">
-                              {p.name}
-                            </p>
-                            <p className="text-blue-600 font-bold text-base mt-1">
+                            <p className="font-semibold text-[#1d1d1f] text-[13px]">{p.name}</p>
+                            <p className="text-[#0071e3] font-semibold text-[15px] mt-1">
                               {formatPrice(p.price)}
                             </p>
                           </div>
-                          <button className="px-5 py-2 bg-blue-600 text-white text-xs font-semibold rounded-xl hover:bg-blue-700 transition-colors w-full">
+                          <button className="px-5 py-1.5 bg-[#0071e3] text-white text-[12px] font-medium rounded-full hover:bg-[#0077ed] transition-colors w-full">
                             Купить
                           </button>
                         </div>
@@ -539,18 +526,18 @@ export default function Index() {
                   {allSpecKeys.map((key, i) => (
                     <tr
                       key={key}
-                      className={i % 2 === 0 ? "bg-gray-50/60" : "bg-white"}
+                      className={i % 2 === 0 ? "bg-[#f5f5f7]" : "bg-white"}
                     >
-                      <td className="px-6 py-3 text-sm text-gray-500 font-medium whitespace-nowrap">
+                      <td className="px-6 py-3 text-[12px] text-[#6e6e73] font-medium whitespace-nowrap">
                         {key}
                       </td>
                       {compareProducts.map((p) => (
                         <td
                           key={p.id}
-                          className="px-6 py-3 text-sm text-gray-800 text-center"
+                          className="px-6 py-3 text-[13px] text-[#1d1d1f] text-center"
                         >
                           {(p.specs as Record<string, string>)[key] ?? (
-                            <span className="text-gray-300">—</span>
+                            <span className="text-[#d2d2d7]">—</span>
                           )}
                         </td>
                       ))}
@@ -560,19 +547,16 @@ export default function Index() {
               </table>
             </div>
 
-            <div className="px-6 py-4 border-t border-gray-100 flex justify-between items-center">
+            <div className="px-6 py-4 border-t border-[#d2d2d7] flex justify-between items-center">
               <button
-                onClick={() => {
-                  setCompareList([]);
-                  setShowCompare(false);
-                }}
-                className="text-sm text-gray-400 hover:text-gray-600"
+                onClick={() => { setCompareList([]); setShowCompare(false); }}
+                className="text-[13px] text-[#6e6e73] hover:text-[#1d1d1f]"
               >
-                Очистить список
+                Очистить
               </button>
               <button
                 onClick={() => setShowCompare(false)}
-                className="px-6 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-xl hover:bg-gray-800 transition-colors"
+                className="px-6 py-2 bg-[#1d1d1f] text-white text-[13px] font-medium rounded-full hover:bg-[#3a3a3c] transition-colors"
               >
                 Закрыть
               </button>
@@ -581,54 +565,49 @@ export default function Index() {
         </div>
       )}
 
-      {/* Floating compare button */}
+      {/* Floating compare */}
       {compareList.length >= 2 && !showCompare && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40">
           <button
             onClick={() => setShowCompare(true)}
-            className="flex items-center gap-3 px-6 py-3.5 bg-gray-900 text-white font-semibold rounded-full shadow-xl hover:bg-gray-800 transition-all hover:scale-105 text-sm"
+            className="flex items-center gap-2.5 px-6 py-3 bg-[#1d1d1f] text-white font-medium rounded-full shadow-xl hover:bg-[#3a3a3c] transition-all hover:scale-105 text-[13px]"
           >
-            <Icon name="BarChart2" size={18} />
+            <Icon name="BarChart2" size={16} />
             Сравнить {compareList.length} товара
-            <span className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center text-xs font-bold">
-              {compareList.length}
-            </span>
           </button>
         </div>
       )}
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <footer className="bg-[#f5f5f7] border-t border-[#d2d2d7]">
+        <div className="max-w-[980px] mx-auto px-5 py-10">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div>
-              <div className="flex items-center gap-1.5">
-                <span className="text-2xl font-bold tracking-tight text-gray-900" style={{fontFamily:"Georgia, serif"}}>Tophone</span>
-                <svg width="20" height="24" viewBox="0 0 170 200" fill="#111111" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M150 80c-3 2-20 12-20 36 0 28 24 38 25 38-1 1-4 14-13 27-8 12-16 23-29 23s-16-7-31-7-19 8-31 8-20-7-32-23C8 165 0 143 0 123c0-29 19-45 38-45 11 0 19 7 26 7s16-7 28-7c5 0 20 0 32 16zM110 49c5-7 9-16 9-25 0-1 0-3 0-4-9 0-19 6-26 13-5 6-10 15-10 24 0 2 0 3 0 3 1 0 2 0 3 0C94 60 105 56 110 49z"/>
-                </svg>
+              <div className="flex items-center gap-1 mb-1">
+                <AppleLogo size={16} color="#6e6e73" />
+                <span className="text-[15px] font-semibold text-[#1d1d1f]">Tophone</span>
               </div>
-              <p className="text-sm text-gray-400 mt-1">
+              <p className="text-[12px] text-[#6e6e73]">
                 Премиальная техника с официальной гарантией
               </p>
             </div>
-            <div className="flex flex-wrap gap-6 text-sm text-gray-500">
-              <div className="flex items-center gap-2">
-                <Icon name="Truck" size={16} />
+            <div className="flex flex-wrap gap-5 text-[12px] text-[#6e6e73]">
+              <div className="flex items-center gap-1.5">
+                <Icon name="Truck" size={14} />
                 <span>Доставка по России</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="Shield" size={16} />
+              <div className="flex items-center gap-1.5">
+                <Icon name="Shield" size={14} />
                 <span>Официальная гарантия</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Icon name="RefreshCw" size={16} />
+              <div className="flex items-center gap-1.5">
+                <Icon name="RefreshCw" size={14} />
                 <span>Возврат 14 дней</span>
               </div>
             </div>
           </div>
-          <div className="mt-8 pt-6 border-t border-gray-200 text-xs text-gray-400 text-center">
-            © 2026 Tophone. Все права защищены.
+          <div className="mt-8 pt-6 border-t border-[#d2d2d7] text-[11px] text-[#6e6e73] text-center">
+            Copyright © 2026 Tophone. Все права защищены.
           </div>
         </div>
       </footer>
